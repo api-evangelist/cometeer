@@ -1,23 +1,120 @@
 aid: cometeer
 name: Cometeer
-description: 'Cometeer is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+x-enrichment:
+  date: '2026-08-01'
+  status: enriched
+  artifacts_added: 19
+  pass: local-v1
+description: >-
+  Cometeer is a Gloucester, Massachusetts coffee company, founded in 2015 by
+  Matthew Roberts and Douglas Hoon, that brews specialty coffee at high extraction
+  and then flash-freezes it with liquid nitrogen into single-serve capsules shipped
+  direct to consumers by subscription. Coffees are roasted by third-wave partners
+  including Counter Culture, Intelligentsia, Onyx, Square Mile, Equator and George
+  Howell. Cometeer publishes no developer API, but its Shopify-hosted storefront
+  exposes a substantial machine-readable agent surface: an /llms.txt agent
+  instruction set, OpenID Connect and RFC 8414 authorization-server metadata on its
+  own apex host, and a live Universal Commerce Protocol (UCP) merchant profile
+  advertising an MCP endpoint for agent-driven cart, checkout and order flows.
+image: https://cometeer.com/cdn/shop/files/Cometeer01528.png?crop=center&height=480&v=1759521644&width=480
 url: https://raw.githubusercontent.com/api-evangelist/cometeer/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
+x-tier: profiled
+x-tier-reason: enrichment-pass
 specificationVersion: '0.20'
 created: '2026-08-01'
 modified: '2026-08-01'
 tags:
 - Company
-apis: []
+- Coffee
+- Food and Beverage
+- E-Commerce
+- Direct to Consumer
+- Retail
+- Subscription
+- Agentic Commerce
+- Shopify
+- Model Context Protocol
+apis:
+- aid: cometeer:storefront
+  name: Cometeer Storefront (read-only)
+  description: >-
+    The public, unauthenticated JSON browsing surface of the Cometeer online store —
+    products, collections, search and sitemap. Cometeer documents these endpoints for
+    agents itself, under "Read-Only Browsing (No Authentication Required)" in its
+    /llms.txt. No credential is required and no rate-limit headers are published.
+  humanURL: https://cometeer.com/llms.txt
+  baseURL: https://cometeer.com
+  tags:
+  - Products
+  - Catalog
+  - E-Commerce
+  properties:
+  - type: OpenAPI
+    url: openapi/cometeer-storefront-openapi.yml
+  - type: LLMsTxt
+    url: llms/cometeer-llms.txt
+- aid: cometeer:ucp-commerce
+  name: Cometeer UCP Commerce (MCP)
+  description: >-
+    Cometeer's Universal Commerce Protocol shopping service, exposed over MCP
+    (JSON-RPC 2.0 via HTTP POST) at /api/ucp/mcp and advertised from
+    /.well-known/ucp. Thirteen tools cover catalog search and lookup, cart, checkout,
+    fulfillment, discount and order. Calls require a resolvable UCP agent profile
+    URI, and completing payment requires contemporaneous human buyer approval.
+  humanURL: https://cometeer.com/llms.txt
+  baseURL: https://cometeer.com/api/ucp/mcp
+  tags:
+  - Agentic Commerce
+  - Model Context Protocol
+  - Checkout
+  properties:
+  - type: MCPServer
+    url: mcp/cometeer-mcp.yml
+  - type: ToolCrosswalk
+    url: mcp/cometeer-tool-crosswalk.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/cometeer-domain-security.yml
 - type: Website
-  url: https://forgeglobal.com/cometeer_stock/
+  url: https://cometeer.com/
+- type: Documentation
+  url: https://cometeer.com/agents.md
+- type: LLMsTxt
+  url: llms/cometeer-llms.txt
+- type: Support
+  url: https://help.cometeer.com/
+- type: Blog
+  url: https://cometeer.com/blogs/tasting-notes
+- type: Pricing
+  url: https://cometeer.com/pages/shop-all-coffee
+- type: SignUp
+  url: https://account.cometeer.com/account
+- type: TermsOfService
+  url: https://cometeer.com/policies/terms-of-service
+- type: PrivacyPolicy
+  url: https://cometeer.com/policies/privacy-policy
+- type: WellKnown
+  url: well-known/cometeer-well-known.yml
+- type: Authentication
+  url: authentication/cometeer-authentication.yml
+- type: OAuthScopes
+  url: scopes/cometeer-scopes.yml
+- type: Conformance
+  url: conformance/cometeer-conformance.yml
+- type: Lifecycle
+  url: lifecycle/cometeer-lifecycle.yml
+- type: Conventions
+  url: conventions/cometeer-conventions.yml
+- type: ErrorCatalog
+  url: errors/cometeer-problem-types.yml
+- type: DataModel
+  url: data-model/cometeer-data-model.yml
+- type: AgentSkill
+  url: skills/_index.yml

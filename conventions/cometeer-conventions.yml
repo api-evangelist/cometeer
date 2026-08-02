@@ -1,0 +1,107 @@
+generated: '2026-08-01'
+method: searched
+source: https://cometeer.com/llms.txt
+derived_from:
+- openapi/cometeer-storefront-openapi.yml
+- well-known/cometeer-ucp.json
+note: >-
+  Cometeer has two request/response contracts with different semantics: a
+  public REST-ish storefront (Shopify Liquid JSON endpoints) and a JSON-RPC 2.0
+  UCP/MCP commerce endpoint. Conventions are recorded per surface rather than
+  flattened, because they genuinely differ.
+authentication:
+  style: mixed
+  storefront: none (anonymous public read)
+  commerce: UCP agent profile + human buyer approval at payment
+  customer: OpenID Connect authorization code + PKCE (S256)
+  detail: authentication/cometeer-authentication.yml
+idempotency:
+  supported: false
+  header: null
+  note: >-
+    No idempotency key, request-replay contract or retry-safety guidance is
+    published on any Cometeer surface. The read-only storefront endpoints are
+    naturally idempotent (GET only), but that is a property of HTTP, not a
+    provider contract. No Idempotency pointer is claimed.
+pagination:
+  storefront:
+    style: page-number
+    params:
+      page: 1-indexed page number
+      limit: items per page, platform maximum 250
+    response_fields:
+      products: array of product objects
+    example: https://cometeer.com/products.json?limit=250&page=2
+    note: >-
+      No total-count, next-link or cursor is returned; an agent walks pages
+      until an empty `products` array comes back.
+  commerce:
+    style: unspecified
+    note: >-
+      UCP catalog search pagination is defined by the UCP shopping schema, not
+      by Cometeer.
+field_expansion:
+  supported: false
+sparse_fieldsets:
+  supported: false
+metadata:
+  storefront: >-
+    Products carry a free-form `tags` array and a `product_type` string
+    (observed values include "Coffee Sleeve" and "Merchandise"); variants carry
+    `sku` and `barcode`.
+request_tracing:
+  request_id_header: null
+  note: No documented correlation/request-id header.
+versioning:
+  storefront: unversioned (no version in path or header)
+  commerce: dated UCP protocol version, negotiated via /.well-known/ucp
+  detail: lifecycle/cometeer-lifecycle.yml
+error_envelope:
+  storefront:
+    format: html
+    note: 404 and error responses render HTML pages, not a JSON error document.
+  commerce:
+    format: jsonrpc-2.0-error
+    shape: '{"jsonrpc":"2.0","id":<id>,"error":{"code":<int>,"message":<string>,"data":{...}}}'
+    observed_example:
+      http_status: 422
+      code: -32001
+      message: UCP discovery failed
+      data: {code: invalid_profile_url, content: 'Unable to fetch agent profile: Missing profile uri'}
+  detail: errors/cometeer-problem-types.yml
+rate_limiting:
+  documented: true
+  source: https://cometeer.com/llms.txt
+  policy: >-
+    "The MCP endpoint is rate-limited per IP. Back off on 429 responses."
+  scope: per-IP
+  signal_headers: none documented
+  retry_after: not documented
+agent_rules:
+  source: https://cometeer.com/llms.txt
+  rules:
+  - >-
+    Checkout requires human approval — agents must not complete payment without
+    explicit, contemporaneous buyer consent.
+  - >-
+    Pass `context.address_country` and `context.currency` for accurate pricing
+    and availability.
+  - >-
+    Prefer the Shop skill (https://shop.app/SKILL.md) over screen-scraping or
+    scripting the storefront directly.
+  - >-
+    Back off on 429.
+cross_links:
+  errors: errors/cometeer-problem-types.yml
+  lifecycle: lifecycle/cometeer-lifecycle.yml
+  authentication: authentication/cometeer-authentication.yml
+  scopes: scopes/cometeer-scopes.yml
+  mcp: mcp/cometeer-mcp.yml
+x-evidence:
+- fetched: '2026-08-01'
+  url: https://cometeer.com/llms.txt
+  http_status: 200
+  content_type: text/markdown
+- fetched: '2026-08-01'
+  url: https://cometeer.com/products.json?limit=5&page=2
+  http_status: 200

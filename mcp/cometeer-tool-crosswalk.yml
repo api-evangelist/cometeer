@@ -1,0 +1,103 @@
+generated: '2026-08-01'
+method: derived
+source:
+- mcp/cometeer-mcp.yml
+- openapi/cometeer-storefront-openapi.yml
+note: >-
+  Cometeer's agent surface and its public REST surface are deliberately
+  asymmetric: the storefront JSON endpoints are read-only catalog browsing,
+  while everything transactional (cart, checkout, order) exists only behind the
+  UCP/MCP endpoint. This crosswalk records that divergence rather than papering
+  over it. Confidence is capped at medium for every row because the live
+  tools/list is gated on a UCP agent profile — tool inputSchemas were read from
+  the OpenRPC contract Cometeer's own /.well-known/ucp names, not from an
+  authenticated introspection of this merchant.
+surfaces:
+  openapi:
+    file: openapi/cometeer-storefront-openapi.yml
+    host: https://cometeer.com
+    gated: false
+    provider_authored: false
+    note: API Evangelist rendering of the endpoints Cometeer documents in /llms.txt.
+  mcp:
+    url: https://cometeer.com/api/ucp/mcp
+    gated: true
+    gate: UCP agent profile (HTTP 422, JSON-RPC -32001 invalid_profile_url)
+    schema: https://ucp.dev/2026-04-08/services/shopping/mcp.openrpc.json
+  graphql:
+    endpoint: null
+    note: No public GraphQL endpoint found on any Cometeer host.
+crosswalk:
+- tool: get_product
+  category: catalog
+  rest: [getProduct]
+  binding: rest
+  confidence: medium
+  note: >-
+    Both return a single product. The MCP tool addresses products by UCP catalog
+    identifier; the REST operation addresses them by storefront handle.
+- tool: search_catalog
+  category: catalog
+  rest: [searchProducts]
+  binding: rest
+  confidence: low
+  note: >-
+    Semantically the same intent, but the REST endpoint (/search) returns an
+    HTML results page — there is no JSON search on the storefront. Structured
+    search is MCP-only in practice.
+- tool: lookup_catalog
+  category: catalog
+  rest: [listProducts, listCollectionProducts]
+  binding: rest
+  confidence: low
+  note: >-
+    Batch identifier lookup has no direct REST equivalent; the closest public
+    path is enumerating /products.json and filtering client-side. Fan-out
+    mapping, not a 1:1 binding.
+mcp_only:
+- tool: create_cart
+  reason: No public REST cart surface; carts are UCP/MCP-only.
+- tool: get_cart
+  reason: No public REST cart surface.
+- tool: update_cart
+  reason: No public REST cart surface.
+- tool: cancel_cart
+  reason: No public REST cart surface.
+- tool: create_checkout
+  reason: Checkout is UCP/MCP-only; the storefront equivalent is a browser session.
+- tool: get_checkout
+  reason: Checkout is UCP/MCP-only.
+- tool: update_checkout
+  reason: Checkout is UCP/MCP-only (shipping address and method selection).
+- tool: complete_checkout
+  reason: >-
+    Order placement is UCP/MCP-only and additionally requires contemporaneous
+    human buyer approval.
+- tool: cancel_checkout
+  reason: Checkout is UCP/MCP-only.
+- tool: get_order
+  reason: >-
+    Order retrieval requires buyer identity; the REST storefront exposes no
+    order surface. A shopper-authenticated path exists separately through
+    Shopify Customer Accounts (scope customer-account-api:full).
+rest_only:
+- operation: listProducts
+  capability: catalog enumeration
+  note: Full paginated product dump; MCP offers search and lookup, not enumeration.
+- operation: listCollectionProducts
+  capability: catalog enumeration by collection
+- operation: getSitemap
+  capability: store metadata / crawl surface
+coverage:
+  tools_named: 13
+  tools_bound_to_rest: 3
+  mcp_only: 10
+  rest_operations_total: 5
+  rest_operations_with_a_tool: 4
+  note: >-
+    searchProducts, getProduct, listProducts and listCollectionProducts each
+    appear in at least one crosswalk row; getSitemap has no tool.
+x-evidence:
+  fetched: '2026-08-01'
+  mcp_tools_list_status: 422
+  openrpc_status: 200

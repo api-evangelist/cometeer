@@ -1,0 +1,65 @@
+generated: '2026-08-01'
+method: searched
+source: https://cometeer.com/.well-known/
+host: https://cometeer.com
+notes: >-
+  Cometeer runs its direct-to-consumer storefront on Shopify. The /.well-known/
+  surface is therefore a Shopify-provisioned discovery surface served from
+  Cometeer's own apex host: OAuth 2.0 Authorization Server Metadata (RFC 8414)
+  and OpenID Connect Discovery for the Shopify Customer Account identity
+  provider, plus a Universal Commerce Protocol (UCP) merchant profile that
+  advertises a live MCP endpoint for agent-driven commerce.
+documents:
+- path: /.well-known/openid-configuration
+  standard: OpenID Connect Discovery 1.0
+  status: 200
+  content_type: application/json
+  file: cometeer-openid-configuration.json
+  issuer: https://shopify.com/authentication/74101293355
+- path: /.well-known/oauth-authorization-server
+  standard: RFC 8414 OAuth 2.0 Authorization Server Metadata
+  status: 200
+  content_type: application/json
+  file: cometeer-oauth-authorization-server.json
+  issuer: https://shopify.com/authentication/74101293355
+- path: /.well-known/ucp
+  standard: Universal Commerce Protocol (UCP) merchant profile
+  status: 200
+  content_type: application/json
+  file: cometeer-ucp.json
+  version: '2026-04-08'
+- path: /.well-known/ucp/2026-04-08
+  standard: UCP merchant profile, version-pinned
+  status: 200
+  content_type: application/json
+  file: null
+- path: /.well-known/security.txt
+  standard: RFC 9116
+  status: 404
+- path: /.well-known/api-catalog
+  standard: RFC 9727
+  status: 404
+- path: /.well-known/ai-plugin.json
+  status: 404
+- path: /.well-known/agent-card.json
+  standard: A2A 1.0.0
+  status: 404
+- path: /.well-known/agent.json
+  standard: A2A pre-0.3 legacy
+  status: 404
+other_hosts_probed:
+- host: cometeer2023.myshopify.com
+  results:
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+- host: account.cometeer.com
+  results:
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /llms.txt, status: 404}
+- host: help.cometeer.com
+  results:
+  - {path: /.well-known/agent-card.json, status: 404}
+x-evidence:
+  fetched: '2026-08-01'
+  method: HTTP GET, following redirects

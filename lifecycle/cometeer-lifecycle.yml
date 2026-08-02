@@ -1,0 +1,57 @@
+generated: '2026-08-01'
+method: searched
+source: https://cometeer.com/.well-known/ucp
+versioning:
+  scheme: dated-protocol-version
+  current: '2026-04-08'
+  supported:
+  - version: '2026-04-08'
+    profile: https://cometeer2023.myshopify.com/.well-known/ucp/2026-04-08
+    status: current
+  - version: '2026-01-23'
+    profile: https://cometeer2023.myshopify.com/.well-known/ucp/2026-01-23
+    status: supported
+  discovery: https://cometeer.com/.well-known/ucp
+  note: >-
+    Version negotiation is machine-readable: the UCP merchant profile publishes
+    a `supported_versions` map so an agent can pin a protocol version and
+    resolve its version-specific profile. Two versions are served concurrently.
+    This is platform (Shopify/UCP) versioning — Cometeer publishes no versioning
+    policy of its own.
+deprecation:
+  policy_url: null
+  sunset_header: unknown
+  note: >-
+    No deprecation or sunset policy is published on any Cometeer host. The
+    concurrent support of UCP 2026-01-23 alongside 2026-04-08 implies an
+    overlap window but no stated policy, so no Deprecation pointer is claimed.
+sla:
+  url: null
+  uptime_target: null
+status_page:
+  url: null
+  note: >-
+    No Cometeer-operated status page found (status.cometeer.com does not
+    resolve). The underlying commerce platform's status page is Shopify's, not
+    Cometeer's, so no StatusPage pointer is claimed.
+support:
+  help_center: https://help.cometeer.com/
+  contact: https://cometeer.com/policies/contact-information
+policies:
+  terms_of_service: https://cometeer.com/policies/terms-of-service
+  privacy_policy: https://cometeer.com/policies/privacy-policy
+  refund_policy: https://cometeer.com/policies/refund-policy
+  shipping_policy: https://cometeer.com/policies/shipping-policy
+  accessibility: https://cometeer.com/pages/accessibility
+deprecated_operations: []
+x-evidence:
+- fetched: '2026-08-01'
+  url: https://cometeer.com/.well-known/ucp
+  http_status: 200
+- fetched: '2026-08-01'
+  url: https://help.cometeer.com/
+  http_status: 200
+- fetched: '2026-08-01'
+  url: https://status.cometeer.com/
+  http_status: 0
+  note: DNS does not resolve

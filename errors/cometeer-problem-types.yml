@@ -1,0 +1,59 @@
+generated: '2026-08-01'
+method: derived
+source: openapi/cometeer-storefront-openapi.yml
+searched_source: https://cometeer.com/llms.txt
+format: none
+note: >-
+  Cometeer publishes no error reference and no RFC 9457 problem+json envelope.
+  Two distinct error shapes exist and both are recorded from observed
+  behaviour: HTML error pages on the storefront, and JSON-RPC 2.0 error objects
+  on the UCP/MCP commerce endpoint.
+envelopes:
+- surface: storefront
+  format: html
+  media_type: text/html
+- surface: ucp-mcp
+  format: jsonrpc-2.0
+  media_type: application/json
+  fields: [jsonrpc, id, 'error.code', 'error.message', 'error.data']
+problems:
+- surface: storefront
+  status: 404
+  title: Resource not found
+  description: Unknown product handle, collection handle or path.
+  media_type: text/html
+  source_operation: openapi/cometeer-storefront-openapi.yml#getProduct
+  observed: true
+- surface: storefront
+  status: 429
+  title: Too many requests
+  description: >-
+    Rate limited. Cometeer's /llms.txt instructs agents to back off on 429.
+  media_type: text/html
+  remediation: Exponential backoff; reduce per-IP request rate.
+  source_operation: openapi/cometeer-storefront-openapi.yml#listProducts
+  observed: false
+  evidence: documented in https://cometeer.com/llms.txt
+- surface: ucp-mcp
+  status: 422
+  code: -32001
+  title: UCP discovery failed
+  data_code: invalid_profile_url
+  detail: 'Unable to fetch agent profile: Missing profile uri'
+  description: >-
+    The JSON-RPC call did not present a resolvable UCP agent profile URI, so the
+    merchant could not complete agent discovery.
+  remediation: >-
+    Publish a UCP agent profile and present its URI on the request; or route the
+    purchase through the Shop skill at https://shop.app/SKILL.md.
+  continue_url: https://cometeer2023.myshopify.com/
+  observed: true
+  evidence: 'POST https://cometeer.com/api/ucp/mcp {"method":"tools/list"} on 2026-08-01'
+x-evidence:
+- fetched: '2026-08-01'
+  url: https://cometeer.com/api/ucp/mcp
+  http_method: POST
+  http_status: 422
+- fetched: '2026-08-01'
+  url: https://cometeer.com/pages/faq
+  http_status: 404

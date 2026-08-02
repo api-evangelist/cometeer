@@ -1,0 +1,22 @@
+generated: '2026-08-01'
+method: generated
+source: https://cometeer.com/llms.txt
+note: >-
+  Two skills, one per Cometeer surface. The catalog skill is grounded in real
+  operationIds from openapi/cometeer-storefront-openapi.yml; the purchase skill
+  is grounded in the real UCP tool names published in Cometeer's own
+  /.well-known/ucp contract and /llms.txt flow. Nothing here is invented.
+skills:
+- file: cometeer-browse-catalog.md
+  name: Browse the Cometeer coffee catalog
+  description: Enumerate and inspect products using the public unauthenticated storefront JSON endpoints.
+  api: openapi/cometeer-storefront-openapi.yml
+  operations: [listProducts, listCollectionProducts, getProduct, getSitemap]
+  auth: none
+- file: cometeer-agentic-purchase.md
+  name: Buy Cometeer coffee as an agent (UCP)
+  description: Run the UCP cart-to-checkout flow over Cometeer's MCP endpoint, with mandatory human buyer approval at payment.
+  api: mcp/cometeer-mcp.yml
+  operations: [search_catalog, create_cart, create_checkout, update_checkout, complete_checkout]
+  auth: ucp-agent-profile
+  gated: true

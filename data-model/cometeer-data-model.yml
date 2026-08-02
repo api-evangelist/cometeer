@@ -1,0 +1,94 @@
+generated: '2026-08-01'
+method: derived
+source: openapi/cometeer-storefront-openapi.yml
+note: >-
+  Entity graph derived from the live storefront JSON payloads observed on
+  2026-08-01 (250 products sampled from /products.json). Ids are opaque 64-bit
+  integers with no id-prefix scheme.
+entities:
+- name: Product
+  description: A sellable item in the Cometeer store.
+  id_field: id
+  id_type: integer(int64)
+  key_field: handle
+  observed_product_types: [Coffee Sleeve, Merchandise, TBD]
+  observed_vendors: [Cometeer, East Fork, Fellow, Subminimal, notNeutral]
+  fields: [id, title, handle, body_html, vendor, product_type, tags, published_at, created_at, updated_at, published_scope, template_suffix]
+- name: Variant
+  description: A purchasable configuration of a Product, carrying price and inventory.
+  id_field: id
+  id_type: integer(int64)
+  fields: [id, product_id, title, sku, barcode, price, price_currency, compare_at_price, option1, option2, option3, grams, weight, weight_unit, taxable, requires_shipping, image_id, quantity_rule, quantity_price_breaks]
+- name: Image
+  description: A product image asset.
+  id_field: id
+  id_type: integer(int64)
+  fields: [id, product_id, src, alt, width, height, position, variant_ids]
+- name: Option
+  description: A named product option axis (e.g. size) with its allowed values.
+  id_field: id
+  id_type: integer(int64)
+  fields: [id, product_id, name, position, values]
+- name: Collection
+  description: >-
+    A named grouping of products, addressed by handle. Not returned as a
+    standalone JSON object by the public endpoints — only as the path segment of
+    /collections/{handle}/products.json.
+  id_field: handle
+  id_type: string
+relationships:
+- from: Product
+  to: Variant
+  type: has_many
+  via: variants[]
+  inverse_via: Variant.product_id
+- from: Variant
+  to: Product
+  type: belongs_to
+  via: product_id
+- from: Product
+  to: Image
+  type: has_many
+  via: images[]
+  inverse_via: Image.product_id
+- from: Product
+  to: Image
+  type: has_one
+  via: image
+  note: The featured image; a duplicate of one entry in images[].
+- from: Image
+  to: Variant
+  type: has_many
+  via: variant_ids[]
+  note: Which variants this image represents.
+- from: Variant
+  to: Image
+  type: has_one
+  via: image_id
+  nullable: true
+- from: Product
+  to: Option
+  type: has_many
+  via: options[]
+  inverse_via: Option.product_id
+- from: Collection
+  to: Product
+  type: has_many
+  via: /collections/{handle}/products.json
+commerce_entities:
+  note: >-
+    Cart, Checkout and Order exist only on the UCP/MCP commerce surface and are
+    defined by the UCP shopping schema, not by any Cometeer-published document.
+    They are not modelled here because their field-level shape was not
+    observable — tools/list is gated on a UCP agent profile.
+  schemas:
+  - https://ucp.dev/2026-04-08/schemas/shopping/cart.json
+  - https://ucp.dev/2026-04-08/schemas/shopping/checkout.json
+  see: mcp/cometeer-mcp.yml
+x-evidence:
+  fetched: '2026-08-01'
+  urls:
+  - https://cometeer.com/products.json?limit=250
+  - https://cometeer.com/products/frozen-gold-ember-espresso.json
+  http_status: 200
+  sample_size: 250

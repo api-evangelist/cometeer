@@ -1,0 +1,89 @@
+generated: '2026-08-01'
+method: searched
+source: https://cometeer.com/.well-known/
+note: >-
+  Cometeer is a direct-to-consumer coffee brand, not an API vendor. Its
+  standards posture is inherited from the Shopify commerce platform its
+  storefront runs on, but every document asserted below was fetched from a
+  Cometeer-controlled host and returns 200.
+standards:
+- id: oauth2
+  conforms: true
+  evidence: >-
+    /.well-known/oauth-authorization-server advertises authorization_code +
+    refresh_token grants with a token endpoint.
+  source: well-known/cometeer-oauth-authorization-server.json
+- id: rfc8414-oauth-authorization-server-metadata
+  conforms: true
+  evidence: /.well-known/oauth-authorization-server returns 200 with issuer, token_endpoint, jwks_uri.
+  source: well-known/cometeer-oauth-authorization-server.json
+- id: openid-connect-discovery
+  conforms: true
+  evidence: /.well-known/openid-configuration returns 200 with id_token_signing_alg_values_supported RS256.
+  source: well-known/cometeer-openid-configuration.json
+- id: rfc7636-pkce
+  conforms: true
+  evidence: code_challenge_methods_supported includes S256.
+  source: well-known/cometeer-openid-configuration.json
+- id: ucp
+  name: Universal Commerce Protocol
+  conforms: true
+  version: '2026-04-08'
+  evidence: >-
+    /.well-known/ucp returns a merchant profile declaring dev.ucp.shopping over
+    MCP transport, eight capabilities and three payment handlers.
+  source: well-known/cometeer-ucp.json
+  spec: https://ucp.dev/2026-04-08/specification/overview/
+- id: mcp
+  name: Model Context Protocol
+  conforms: true
+  evidence: >-
+    UCP shopping service is declared with transport "mcp" at
+    https://cometeer.com/api/ucp/mcp; endpoint answers JSON-RPC 2.0 (observed
+    -32001 error envelope on an unprofiled call).
+  source: mcp/cometeer-mcp.yml
+- id: openrpc
+  conforms: true
+  evidence: >-
+    The MCP tool contract Cometeer's UCP profile points at is an OpenRPC 1.3.2
+    document (UCP Shopping Service 2026-04-08, 13 methods).
+  source: https://ucp.dev/2026-04-08/services/shopping/mcp.openrpc.json
+- id: llmstxt
+  conforms: true
+  evidence: /llms.txt returns 200 text/markdown with an agent instruction set; mirrors /agents.md.
+  source: llms/cometeer-llms.txt
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404.
+- id: rfc9727-api-catalog
+  conforms: false
+  evidence: /.well-known/api-catalog returns 404.
+- id: a2a
+  conforms: false
+  evidence: >-
+    /.well-known/agent-card.json and /.well-known/agent.json return 404 on
+    cometeer.com, cometeer2023.myshopify.com and account.cometeer.com.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: >-
+    Storefront errors are HTML pages; the MCP endpoint uses JSON-RPC 2.0 error
+    objects, not application/problem+json.
+- id: asyncapi
+  conforms: false
+  evidence: No published event, streaming or webhook surface found.
+- id: openapi
+  conforms: false
+  evidence: >-
+    Cometeer publishes no OpenAPI. openapi/cometeer-storefront-openapi.yml is an
+    API Evangelist rendering of the endpoints Cometeer documents in /llms.txt,
+    not a provider artifact.
+compliance_program:
+  published: false
+  note: >-
+    No trust center, certification page (SOC 2 / ISO 27001 / PCI DSS) or
+    compliance statement was found on any Cometeer host. PCI scope sits with
+    Shopify as the merchant of record's payment platform, and Cometeer does not
+    publish its own attestation.
+x-evidence:
+  fetched: '2026-08-01'
+  hosts_probed: [cometeer.com, cometeer2023.myshopify.com, account.cometeer.com, help.cometeer.com]

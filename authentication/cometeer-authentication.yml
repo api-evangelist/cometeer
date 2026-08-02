@@ -1,0 +1,84 @@
+generated: '2026-08-01'
+method: searched
+source: https://cometeer.com/.well-known/openid-configuration
+docs: https://cometeer.com/llms.txt
+summary:
+  types: [none, openIdConnect, oauth2]
+  api_key_in: []
+  oauth2_flows: [authorizationCode, refreshToken, jwt-bearer]
+  note: >-
+    Cometeer exposes three distinct surfaces with three distinct auth postures:
+    an anonymous read-only storefront, an OpenID Connect customer identity
+    provider (Shopify Customer Accounts), and a UCP/MCP commerce endpoint gated
+    on an agent profile rather than a bearer token.
+surfaces:
+- id: storefront-read
+  name: Read-only storefront JSON
+  spec: openapi/cometeer-storefront-openapi.yml
+  auth: none
+  description: >-
+    Product, collection, search and sitemap endpoints are public and require no
+    credential. Cometeer documents them for agents under "Read-Only Browsing
+    (No Authentication Required)" in /llms.txt.
+- id: customer-account
+  name: Customer Account identity (OpenID Connect)
+  auth: openIdConnect
+  description: >-
+    Shopify Customer Accounts, provisioned for Cometeer shop 74101293355 and
+    discoverable from Cometeer's own apex host. Intended for the shopper's own
+    account/subscription portal at https://account.cometeer.com/account, not for
+    third-party server-to-server integration.
+- id: ucp-mcp
+  name: UCP shopping MCP endpoint
+  auth: ucp-agent-profile
+  description: >-
+    https://cometeer.com/api/ucp/mcp rejects anonymous JSON-RPC calls with HTTP
+    422 / code -32001 `invalid_profile_url` until the calling agent presents a
+    resolvable UCP agent profile URI. Payment completion additionally requires
+    contemporaneous human buyer approval.
+schemes:
+- name: CometeerCustomerAccountOIDC
+  type: openIdConnect
+  openIdConnectUrl: https://cometeer.com/.well-known/openid-configuration
+  issuer: https://shopify.com/authentication/74101293355
+  authorization_endpoint: https://shopify.com/authentication/74101293355/oauth/authorize
+  token_endpoint: https://shopify.com/authentication/74101293355/oauth/token
+  end_session_endpoint: https://shopify.com/authentication/74101293355/logout
+  jwks_uri: https://shopify.com/authentication/74101293355/.well-known/jwks.json
+  response_types_supported: [code]
+  grant_types_supported: [authorization_code, refresh_token, 'urn:ietf:params:oauth:grant-type:jwt-bearer']
+  token_endpoint_auth_methods_supported: [client_secret_basic]
+  code_challenge_methods_supported: [S256]
+  id_token_signing_alg_values_supported: [RS256]
+  subject_types_supported: [public]
+  claims_supported: [iss, sub, aud, exp, iat, nonce, sid, email, email_verified]
+  scopes_supported: [openid, email, 'customer-account-api:full', 'customer-account-mcp-api:full']
+  sources: [well-known/cometeer-openid-configuration.json]
+- name: CometeerOAuthAuthorizationServer
+  type: oauth2
+  metadata: https://cometeer.com/.well-known/oauth-authorization-server
+  standard: RFC 8414
+  note: >-
+    Byte-identical to the OIDC discovery document; the same Shopify Customer
+    Account authorization server is advertised under both metadata standards.
+  sources: [well-known/cometeer-oauth-authorization-server.json]
+- name: UCPAgentProfile
+  type: other
+  scheme: ucp-agent-profile
+  note: >-
+    Not an OAuth/apiKey scheme. The UCP protocol requires the calling agent to
+    publish a resolvable agent profile URI which the merchant fetches during
+    JSON-RPC discovery. Observed failure mode recorded in mcp/cometeer-mcp.yml.
+related:
+  scopes: scopes/cometeer-scopes.yml
+  conventions: conventions/cometeer-conventions.yml
+  mcp: mcp/cometeer-mcp.yml
+x-evidence:
+- fetched: '2026-08-01'
+  url: https://cometeer.com/.well-known/openid-configuration
+  http_status: 200
+  content_type: application/json
+- fetched: '2026-08-01'
+  url: https://cometeer.com/.well-known/oauth-authorization-server
+  http_status: 200
+  content_type: application/json
