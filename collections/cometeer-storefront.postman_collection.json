@@ -1,0 +1,812 @@
+{
+  "item": [
+    {
+      "id": "eafb8014-06a9-4881-a3e3-0e8f2c338dd6",
+      "name": "Products",
+      "description": {
+        "content": "Product catalog browsing",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "98a4f879-4dd4-4644-b69e-428c234bbbfa",
+          "name": "List all products",
+          "request": {
+            "name": "List all products",
+            "description": {
+              "content": "Returns the store's published products as JSON. Paginated with `page` and `limit`. Documented in Cometeer's /llms.txt as \"Browse all products\".",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "products.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "30",
+                  "description": "Number of products per page (Shopify caps this at 250)."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "1-indexed page number."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "daf20ad2-b325-45a0-85fd-a93775a83c9b",
+              "name": "A page of products.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"products\": [\n    {\n      \"id\": 5282,\n      \"title\": \"string\",\n      \"handle\": \"string\",\n      \"body_html\": \"string\",\n      \"published_at\": \"1964-12-25T17:57:15.489Z\",\n      \"created_at\": \"1986-10-23T22:36:35.033Z\",\n      \"updated_at\": \"2006-02-05T23:26:17.261Z\",\n      \"vendor\": \"Cometeer\",\n      \"product_type\": \"Coffee Sleeve\",\n      \"template_suffix\": \"string\",\n      \"published_scope\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"variants\": [\n        {\n          \"id\": 7439,\n          \"product_id\": 4894,\n          \"title\": \"string\",\n          \"sku\": \"string\",\n          \"barcode\": \"string\",\n          \"position\": 887,\n          \"price\": \"string\",\n          \"price_currency\": \"USD\",\n          \"compare_at_price\": \"string\",\n          \"compare_at_price_currency\": \"string\",\n          \"option1\": \"string\",\n          \"option2\": \"string\",\n          \"option3\": \"string\",\n          \"grams\": 4077,\n          \"weight\": 5992.834688055481,\n          \"weight_unit\": \"string\",\n          \"taxable\": false,\n          \"tax_code\": \"string\",\n          \"requires_shipping\": false,\n          \"fulfillment_service\": \"string\",\n          \"inventory_management\": \"string\",\n          \"image_id\": 7404,\n          \"quantity_rule\": {},\n          \"created_at\": \"1997-05-17T13:27:03.335Z\",\n          \"updated_at\": \"1979-07-17T09:13:41.387Z\"\n        },\n        {\n          \"id\": 6373,\n          \"product_id\": 3272,\n          \"title\": \"string\",\n          \"sku\": \"string\",\n          \"barcode\": \"string\",\n          \"position\": 4045,\n          \"price\": \"string\",\n          \"price_currency\": \"USD\",\n          \"compare_at_price\": \"string\",\n          \"compare_at_price_currency\": \"string\",\n          \"option1\": \"string\",\n          \"option2\": \"string\",\n          \"option3\": \"string\",\n          \"grams\": 5929,\n          \"weight\": 9060.186496340139,\n          \"weight_unit\": \"string\",\n          \"taxable\": false,\n          \"tax_code\": \"string\",\n          \"requires_shipping\": false,\n          \"fulfillment_service\": \"string\",\n          \"inventory_management\": \"string\",\n          \"image_id\": 2547,\n          \"quantity_rule\": {},\n          \"created_at\": \"2017-08-07T09:30:39.709Z\",\n          \"updated_at\": \"1971-09-07T02:14:54.477Z\"\n        }\n      ],\n      \"images\": [\n        {\n          \"id\": 1078,\n          \"product_id\": 5962,\n          \"src\": \"https://oAkZbbBJNgGNxqhL.zzr1nnVgFl-SbcyqpOvN9i8iqNnt4LVVm.\",\n          \"alt\": \"string\",\n          \"width\": 4072,\n          \"height\": 7185,\n          \"position\": 5948,\n          \"variant_ids\": [\n            8441,\n            917\n          ],\n          \"created_at\": \"2000-10-31T15:48:51.367Z\",\n          \"updated_at\": \"1969-12-05T22:31:08.677Z\"\n        },\n        {\n          \"id\": 6750,\n          \"product_id\": 4963,\n          \"src\": \"http://iouSQqeCWdFQqOJUVoSBPCWVyrnf.auG0Bi9t6Lu\",\n          \"alt\": \"string\",\n          \"width\": 7354,\n          \"height\": 8444,\n          \"position\": 3412,\n          \"variant_ids\": [\n            4446,\n            4035\n          ],\n          \"created_at\": \"1993-02-12T22:30:35.110Z\",\n          \"updated_at\": \"1948-02-19T06:23:26.438Z\"\n        }\n      ],\n      \"image\": {\n        \"id\": 2773,\n        \"product_id\": 367,\n        \"src\": \"https://qFTrdIidmcd.mwk5Aw,+gxDsKLWB7ybw.s+NwQiXo7Iwl3\",\n        \"alt\": \"string\",\n        \"width\": 8771,\n        \"height\": 5979,\n        \"position\": 4244,\n        \"variant_ids\": [\n          5347,\n          9669\n        ],\n        \"created_at\": \"1972-06-05T09:52:31.809Z\",\n        \"updated_at\": \"1985-04-15T03:53:05.558Z\"\n      },\n      \"options\": [\n        {\n          \"id\": 1793,\n          \"product_id\": 6923,\n          \"name\": \"string\",\n          \"position\": 160,\n          \"values\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"id\": 5528,\n          \"product_id\": 9277,\n          \"name\": \"string\",\n          \"position\": 6503,\n          \"values\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": 6803,\n      \"title\": \"string\",\n      \"handle\": \"string\",\n      \"body_html\": \"string\",\n      \"published_at\": \"1986-11-28T02:29:02.418Z\",\n      \"created_at\": \"2024-06-17T19:33:10.038Z\",\n      \"updated_at\": \"2017-04-04T03:07:52.448Z\",\n      \"vendor\": \"Cometeer\",\n      \"product_type\": \"Coffee Sleeve\",\n      \"template_suffix\": \"string\",\n      \"published_scope\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"variants\": [\n        {\n          \"id\": 9806,\n          \"product_id\": 8366,\n          \"title\": \"string\",\n          \"sku\": \"string\",\n          \"barcode\": \"string\",\n          \"position\": 5561,\n          \"price\": \"string\",\n          \"price_currency\": \"USD\",\n          \"compare_at_price\": \"string\",\n          \"compare_at_price_currency\": \"string\",\n          \"option1\": \"string\",\n          \"option2\": \"string\",\n          \"option3\": \"string\",\n          \"grams\": 9550,\n          \"weight\": 9115.83890264509,\n          \"weight_unit\": \"string\",\n          \"taxable\": false,\n          \"tax_code\": \"string\",\n          \"requires_shipping\": true,\n          \"fulfillment_service\": \"string\",\n          \"inventory_management\": \"string\",\n          \"image_id\": 1561,\n          \"quantity_rule\": {},\n          \"created_at\": \"1952-12-23T09:58:39.480Z\",\n          \"updated_at\": \"1956-06-28T13:03:21.896Z\"\n        },\n        {\n          \"id\": 4043,\n          \"product_id\": 9988,\n          \"title\": \"string\",\n          \"sku\": \"string\",\n          \"barcode\": \"string\",\n          \"position\": 5167,\n          \"price\": \"string\",\n          \"price_currency\": \"USD\",\n          \"compare_at_price\": \"string\",\n          \"compare_at_price_currency\": \"string\",\n          \"option1\": \"string\",\n          \"option2\": \"string\",\n          \"option3\": \"string\",\n          \"grams\": 595,\n          \"weight\": 8543.198775192179,\n          \"weight_unit\": \"string\",\n          \"taxable\": false,\n          \"tax_code\": \"string\",\n          \"requires_shipping\": false,\n          \"fulfillment_service\": \"string\",\n          \"inventory_management\": \"string\",\n          \"image_id\": 1477,\n          \"quantity_rule\": {},\n          \"created_at\": \"1978-02-21T18:32:20.665Z\",\n          \"updated_at\": \"1955-01-08T15:30:33.396Z\"\n        }\n      ],\n      \"images\": [\n        {\n          \"id\": 3096,\n          \"product_id\": 6807,\n          \"src\": \"https://TTwkgKwzGZYOkMRxBFKL.fjsgzuZ,54sgKWp3TfLYhZXdxOm4WLs5eXYNxJTMh3QyeEI7-F5bZn9\",\n          \"alt\": \"string\",\n          \"width\": 6334,\n          \"height\": 8585,\n          \"position\": 3320,\n          \"variant_ids\": [\n            286,\n            3420\n          ],\n          \"created_at\": \"1992-01-09T22:41:48.090Z\",\n          \"updated_at\": \"1957-10-21T15:48:57.952Z\"\n        },\n        {\n          \"id\": 7697,\n          \"product_id\": 6518,\n          \"src\": \"https://mZxrFXAdrnP.gbd01Qp92RPRkGl8BixWINz\",\n          \"alt\": \"string\",\n          \"width\": 556,\n          \"height\": 9609,\n          \"position\": 3,\n          \"variant_ids\": [\n            9391,\n            5461\n          ],\n          \"created_at\": \"2005-04-13T03:41:50.587Z\",\n          \"updated_at\": \"1986-04-01T23:17:15.570Z\"\n        }\n      ],\n      \"image\": {\n        \"id\": 5391,\n        \"product_id\": 5265,\n        \"src\": \"https://QDMatqWUwpupZXNsrvuClyZQpuoO.lksY-H5dDh7TZq2vtMbq3TEjughIkHBC57,wec\",\n        \"alt\": \"string\",\n        \"width\": 2546,\n        \"height\": 2897,\n        \"position\": 8576,\n        \"variant_ids\": [\n          2017,\n          8937\n        ],\n        \"created_at\": \"1947-07-20T14:04:58.599Z\",\n        \"updated_at\": \"1968-01-12T23:41:48.836Z\"\n      },\n      \"options\": [\n        {\n          \"id\": 6966,\n          \"product_id\": 7665,\n          \"name\": \"string\",\n          \"position\": 8018,\n          \"values\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"id\": 4207,\n          \"product_id\": 8186,\n          \"name\": \"string\",\n          \"position\": 6523,\n          \"values\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7dfef3f4-a86d-497d-9d4f-935a384116ba",
+              "name": "The requested resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/html"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "11b758a3-337c-478c-a50e-26e34db94ab6",
+              "name": "Rate limited. Cometeer's /llms.txt instructs agents to back off on 429 responses.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/html"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8aa18fa0-be73-4d2b-a503-8275ab870b0a",
+          "name": "Get a single product by handle",
+          "request": {
+            "name": "Get a single product by handle",
+            "description": {
+              "content": "Documented in Cometeer's /llms.txt as \"Product JSON\".",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "products",
+                "{{handle}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7bc4b9ab-e722-41a0-a2e3-8f817928d2f3",
+              "name": "The product.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    "{{handle}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"product\": {\n    \"id\": 6889,\n    \"title\": \"string\",\n    \"handle\": \"string\",\n    \"body_html\": \"string\",\n    \"published_at\": \"1999-11-30T22:02:13.919Z\",\n    \"created_at\": \"1994-07-30T03:49:28.303Z\",\n    \"updated_at\": \"2007-07-19T07:13:00.363Z\",\n    \"vendor\": \"Cometeer\",\n    \"product_type\": \"Coffee Sleeve\",\n    \"template_suffix\": \"string\",\n    \"published_scope\": \"string\",\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"variants\": [\n      {\n        \"id\": 8681,\n        \"product_id\": 6481,\n        \"title\": \"string\",\n        \"sku\": \"string\",\n        \"barcode\": \"string\",\n        \"position\": 2636,\n        \"price\": \"string\",\n        \"price_currency\": \"USD\",\n        \"compare_at_price\": \"string\",\n        \"compare_at_price_currency\": \"string\",\n        \"option1\": \"string\",\n        \"option2\": \"string\",\n        \"option3\": \"string\",\n        \"grams\": 2758,\n        \"weight\": 1389.3920179097042,\n        \"weight_unit\": \"string\",\n        \"taxable\": false,\n        \"tax_code\": \"string\",\n        \"requires_shipping\": false,\n        \"fulfillment_service\": \"string\",\n        \"inventory_management\": \"string\",\n        \"image_id\": 1117,\n        \"quantity_rule\": {},\n        \"created_at\": \"2021-03-08T16:26:53.402Z\",\n        \"updated_at\": \"2004-10-17T00:41:39.797Z\"\n      },\n      {\n        \"id\": 8563,\n        \"product_id\": 7251,\n        \"title\": \"string\",\n        \"sku\": \"string\",\n        \"barcode\": \"string\",\n        \"position\": 5965,\n        \"price\": \"string\",\n        \"price_currency\": \"USD\",\n        \"compare_at_price\": \"string\",\n        \"compare_at_price_currency\": \"string\",\n        \"option1\": \"string\",\n        \"option2\": \"string\",\n        \"option3\": \"string\",\n        \"grams\": 8163,\n        \"weight\": 9780.108419470846,\n        \"weight_unit\": \"string\",\n        \"taxable\": false,\n        \"tax_code\": \"string\",\n        \"requires_shipping\": false,\n        \"fulfillment_service\": \"string\",\n        \"inventory_management\": \"string\",\n        \"image_id\": 9816,\n        \"quantity_rule\": {},\n        \"created_at\": \"1947-03-24T09:52:07.660Z\",\n        \"updated_at\": \"1969-03-26T05:59:04.625Z\"\n      }\n    ],\n    \"images\": [\n      {\n        \"id\": 1827,\n        \"product_id\": 6974,\n        \"src\": \"http://faul.usxaDaEI6S0tTke+O8ZHSfNN-60Ubn.GkL47iETfoHQyZhrhF1IZUavYCMnNXvCdDwVTyZZynSBdjr7,hPPfcLUCx3bhRs\",\n        \"alt\": \"string\",\n        \"width\": 3062,\n        \"height\": 2791,\n        \"position\": 6260,\n        \"variant_ids\": [\n          1786,\n          8519\n        ],\n        \"created_at\": \"1984-11-26T02:26:56.185Z\",\n        \"updated_at\": \"1959-05-31T20:11:37.253Z\"\n      },\n      {\n        \"id\": 5048,\n        \"product_id\": 2970,\n        \"src\": \"http://FSFybQrDvaJFzGNVviQCpuoF.ijgIVOjeqvMaCfAhK+HBW9YdwlIdfBLrQVHyEal7MMqld+Z7RQAvWXxYE-TZNzn1X\",\n        \"alt\": \"string\",\n        \"width\": 5139,\n        \"height\": 664,\n        \"position\": 6547,\n        \"variant_ids\": [\n          5056,\n          1206\n        ],\n        \"created_at\": \"2022-01-31T13:02:02.067Z\",\n        \"updated_at\": \"1969-09-30T15:47:22.953Z\"\n      }\n    ],\n    \"image\": {\n      \"id\": 4606,\n      \"product_id\": 9006,\n      \"src\": \"http://EuTXypcOTarUdLdkiliRrDmOaWgh.bfYBTpt\",\n      \"alt\": \"string\",\n      \"width\": 8362,\n      \"height\": 2563,\n      \"position\": 163,\n      \"variant_ids\": [\n        9416,\n        6936\n      ],\n      \"created_at\": \"2007-06-20T03:19:06.681Z\",\n      \"updated_at\": \"2006-09-23T20:44:33.801Z\"\n    },\n    \"options\": [\n      {\n        \"id\": 373,\n        \"product_id\": 1190,\n        \"name\": \"string\",\n        \"position\": 2958,\n        \"values\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"id\": 8182,\n        \"product_id\": 7516,\n        \"name\": \"string\",\n        \"position\": 3121,\n        \"values\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ddc1af38-907e-46f8-9cf5-4e1f1954ff33",
+              "name": "The requested resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    "{{handle}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/html"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "93306bff-43eb-4cf5-9ad4-c3904ea3059e",
+              "name": "Rate limited. Cometeer's /llms.txt instructs agents to back off on 429 responses.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    "{{handle}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/html"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4f4350be-2805-4ee3-a288-b0c92eb5d325",
+          "name": "Store sitemap index",
+          "request": {
+            "name": "Store sitemap index",
+            "description": {
+              "content": "Documented in Cometeer's /llms.txt under \"Store Metadata\".",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sitemap.xml"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b3f20f8f-35b8-44f2-8d7e-0b9d9aeb3a7d",
+              "name": "XML sitemap index.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sitemap.xml"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "23cfe324-3dff-4221-9bd4-17c99cee5aea",
+      "name": "Collections",
+      "description": {
+        "content": "Collection (category) browsing",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f2a53432-3611-47d1-8516-a0cf345a52a1",
+          "name": "List products in a collection",
+          "request": {
+            "name": "List products in a collection",
+            "description": {
+              "content": "Documented in Cometeer's /llms.txt as \"Collection JSON\". The `all` handle returns every product in the store.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "collections",
+                ":handle",
+                "products.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "30"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "handle",
+                  "description": "(Required) The collection's URL handle, e.g. `all`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "676d5ca9-de8c-4828-98c7-507ae205e4e6",
+              "name": "A page of products in the collection.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":handle",
+                    "products.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "handle",
+                      "description": "(Required) The collection's URL handle, e.g. `all`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"products\": [\n    {\n      \"id\": 5282,\n      \"title\": \"string\",\n      \"handle\": \"string\",\n      \"body_html\": \"string\",\n      \"published_at\": \"1964-12-25T17:57:15.489Z\",\n      \"created_at\": \"1986-10-23T22:36:35.033Z\",\n      \"updated_at\": \"2006-02-05T23:26:17.261Z\",\n      \"vendor\": \"Cometeer\",\n      \"product_type\": \"Coffee Sleeve\",\n      \"template_suffix\": \"string\",\n      \"published_scope\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"variants\": [\n        {\n          \"id\": 7439,\n          \"product_id\": 4894,\n          \"title\": \"string\",\n          \"sku\": \"string\",\n          \"barcode\": \"string\",\n          \"position\": 887,\n          \"price\": \"string\",\n          \"price_currency\": \"USD\",\n          \"compare_at_price\": \"string\",\n          \"compare_at_price_currency\": \"string\",\n          \"option1\": \"string\",\n          \"option2\": \"string\",\n          \"option3\": \"string\",\n          \"grams\": 4077,\n          \"weight\": 5992.834688055481,\n          \"weight_unit\": \"string\",\n          \"taxable\": false,\n          \"tax_code\": \"string\",\n          \"requires_shipping\": false,\n          \"fulfillment_service\": \"string\",\n          \"inventory_management\": \"string\",\n          \"image_id\": 7404,\n          \"quantity_rule\": {},\n          \"created_at\": \"1997-05-17T13:27:03.335Z\",\n          \"updated_at\": \"1979-07-17T09:13:41.387Z\"\n        },\n        {\n          \"id\": 6373,\n          \"product_id\": 3272,\n          \"title\": \"string\",\n          \"sku\": \"string\",\n          \"barcode\": \"string\",\n          \"position\": 4045,\n          \"price\": \"string\",\n          \"price_currency\": \"USD\",\n          \"compare_at_price\": \"string\",\n          \"compare_at_price_currency\": \"string\",\n          \"option1\": \"string\",\n          \"option2\": \"string\",\n          \"option3\": \"string\",\n          \"grams\": 5929,\n          \"weight\": 9060.186496340139,\n          \"weight_unit\": \"string\",\n          \"taxable\": false,\n          \"tax_code\": \"string\",\n          \"requires_shipping\": false,\n          \"fulfillment_service\": \"string\",\n          \"inventory_management\": \"string\",\n          \"image_id\": 2547,\n          \"quantity_rule\": {},\n          \"created_at\": \"2017-08-07T09:30:39.709Z\",\n          \"updated_at\": \"1971-09-07T02:14:54.477Z\"\n        }\n      ],\n      \"images\": [\n        {\n          \"id\": 1078,\n          \"product_id\": 5962,\n          \"src\": \"https://oAkZbbBJNgGNxqhL.zzr1nnVgFl-SbcyqpOvN9i8iqNnt4LVVm.\",\n          \"alt\": \"string\",\n          \"width\": 4072,\n          \"height\": 7185,\n          \"position\": 5948,\n          \"variant_ids\": [\n            8441,\n            917\n          ],\n          \"created_at\": \"2000-10-31T15:48:51.367Z\",\n          \"updated_at\": \"1969-12-05T22:31:08.677Z\"\n        },\n        {\n          \"id\": 6750,\n          \"product_id\": 4963,\n          \"src\": \"http://iouSQqeCWdFQqOJUVoSBPCWVyrnf.auG0Bi9t6Lu\",\n          \"alt\": \"string\",\n          \"width\": 7354,\n          \"height\": 8444,\n          \"position\": 3412,\n          \"variant_ids\": [\n            4446,\n            4035\n          ],\n          \"created_at\": \"1993-02-12T22:30:35.110Z\",\n          \"updated_at\": \"1948-02-19T06:23:26.438Z\"\n        }\n      ],\n      \"image\": {\n        \"id\": 2773,\n        \"product_id\": 367,\n        \"src\": \"https://qFTrdIidmcd.mwk5Aw,+gxDsKLWB7ybw.s+NwQiXo7Iwl3\",\n        \"alt\": \"string\",\n        \"width\": 8771,\n        \"height\": 5979,\n        \"position\": 4244,\n        \"variant_ids\": [\n          5347,\n          9669\n        ],\n        \"created_at\": \"1972-06-05T09:52:31.809Z\",\n        \"updated_at\": \"1985-04-15T03:53:05.558Z\"\n      },\n      \"options\": [\n        {\n          \"id\": 1793,\n          \"product_id\": 6923,\n          \"name\": \"string\",\n          \"position\": 160,\n          \"values\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"id\": 5528,\n          \"product_id\": 9277,\n          \"name\": \"string\",\n          \"position\": 6503,\n          \"values\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": 6803,\n      \"title\": \"string\",\n      \"handle\": \"string\",\n      \"body_html\": \"string\",\n      \"published_at\": \"1986-11-28T02:29:02.418Z\",\n      \"created_at\": \"2024-06-17T19:33:10.038Z\",\n      \"updated_at\": \"2017-04-04T03:07:52.448Z\",\n      \"vendor\": \"Cometeer\",\n      \"product_type\": \"Coffee Sleeve\",\n      \"template_suffix\": \"string\",\n      \"published_scope\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"variants\": [\n        {\n          \"id\": 9806,\n          \"product_id\": 8366,\n          \"title\": \"string\",\n          \"sku\": \"string\",\n          \"barcode\": \"string\",\n          \"position\": 5561,\n          \"price\": \"string\",\n          \"price_currency\": \"USD\",\n          \"compare_at_price\": \"string\",\n          \"compare_at_price_currency\": \"string\",\n          \"option1\": \"string\",\n          \"option2\": \"string\",\n          \"option3\": \"string\",\n          \"grams\": 9550,\n          \"weight\": 9115.83890264509,\n          \"weight_unit\": \"string\",\n          \"taxable\": false,\n          \"tax_code\": \"string\",\n          \"requires_shipping\": true,\n          \"fulfillment_service\": \"string\",\n          \"inventory_management\": \"string\",\n          \"image_id\": 1561,\n          \"quantity_rule\": {},\n          \"created_at\": \"1952-12-23T09:58:39.480Z\",\n          \"updated_at\": \"1956-06-28T13:03:21.896Z\"\n        },\n        {\n          \"id\": 4043,\n          \"product_id\": 9988,\n          \"title\": \"string\",\n          \"sku\": \"string\",\n          \"barcode\": \"string\",\n          \"position\": 5167,\n          \"price\": \"string\",\n          \"price_currency\": \"USD\",\n          \"compare_at_price\": \"string\",\n          \"compare_at_price_currency\": \"string\",\n          \"option1\": \"string\",\n          \"option2\": \"string\",\n          \"option3\": \"string\",\n          \"grams\": 595,\n          \"weight\": 8543.198775192179,\n          \"weight_unit\": \"string\",\n          \"taxable\": false,\n          \"tax_code\": \"string\",\n          \"requires_shipping\": false,\n          \"fulfillment_service\": \"string\",\n          \"inventory_management\": \"string\",\n          \"image_id\": 1477,\n          \"quantity_rule\": {},\n          \"created_at\": \"1978-02-21T18:32:20.665Z\",\n          \"updated_at\": \"1955-01-08T15:30:33.396Z\"\n        }\n      ],\n      \"images\": [\n        {\n          \"id\": 3096,\n          \"product_id\": 6807,\n          \"src\": \"https://TTwkgKwzGZYOkMRxBFKL.fjsgzuZ,54sgKWp3TfLYhZXdxOm4WLs5eXYNxJTMh3QyeEI7-F5bZn9\",\n          \"alt\": \"string\",\n          \"width\": 6334,\n          \"height\": 8585,\n          \"position\": 3320,\n          \"variant_ids\": [\n            286,\n            3420\n          ],\n          \"created_at\": \"1992-01-09T22:41:48.090Z\",\n          \"updated_at\": \"1957-10-21T15:48:57.952Z\"\n        },\n        {\n          \"id\": 7697,\n          \"product_id\": 6518,\n          \"src\": \"https://mZxrFXAdrnP.gbd01Qp92RPRkGl8BixWINz\",\n          \"alt\": \"string\",\n          \"width\": 556,\n          \"height\": 9609,\n          \"position\": 3,\n          \"variant_ids\": [\n            9391,\n            5461\n          ],\n          \"created_at\": \"2005-04-13T03:41:50.587Z\",\n          \"updated_at\": \"1986-04-01T23:17:15.570Z\"\n        }\n      ],\n      \"image\": {\n        \"id\": 5391,\n        \"product_id\": 5265,\n        \"src\": \"https://QDMatqWUwpupZXNsrvuClyZQpuoO.lksY-H5dDh7TZq2vtMbq3TEjughIkHBC57,wec\",\n        \"alt\": \"string\",\n        \"width\": 2546,\n        \"height\": 2897,\n        \"position\": 8576,\n        \"variant_ids\": [\n          2017,\n          8937\n        ],\n        \"created_at\": \"1947-07-20T14:04:58.599Z\",\n        \"updated_at\": \"1968-01-12T23:41:48.836Z\"\n      },\n      \"options\": [\n        {\n          \"id\": 6966,\n          \"product_id\": 7665,\n          \"name\": \"string\",\n          \"position\": 8018,\n          \"values\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"id\": 4207,\n          \"product_id\": 8186,\n          \"name\": \"string\",\n          \"position\": 6523,\n          \"values\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d6289693-c3de-4a6f-a920-78dc2a7f309a",
+              "name": "The requested resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":handle",
+                    "products.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "handle",
+                      "description": "(Required) The collection's URL handle, e.g. `all`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/html"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7bcfea3f-5b38-4467-ae00-76e2248f2578",
+              "name": "Rate limited. Cometeer's /llms.txt instructs agents to back off on 429 responses.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":handle",
+                    "products.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "handle",
+                      "description": "(Required) The collection's URL handle, e.g. `all`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/html"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "c31939b5-c7cb-434b-8a82-4bdd2f7be6d7",
+      "name": "Search",
+      "description": {
+        "content": "Storefront search",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e62267bc-ad9b-4ec4-9710-681e3a87edc1",
+          "name": "Search the storefront",
+          "request": {
+            "name": "Search the storefront",
+            "description": {
+              "content": "Documented in Cometeer's /llms.txt as \"Search\". Returns an HTML results page; there is no JSON representation of this endpoint on the storefront. Agents needing structured search should use the UCP MCP `search_catalog` tool instead (see mcp/cometeer-mcp.yml).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) The search query."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Restrict results to a resource type."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "69b9ab4b-dd12-40cd-97a2-ee1b96fe84d2",
+              "name": "HTML search results page.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/html"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c7983cf4-67cd-4284-8bd9-f2f0771d5a44",
+              "name": "Rate limited. Cometeer's /llms.txt instructs agents to back off on 429 responses.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/html"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cometeer.com",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) The product's URL handle, e.g. `frozen-gold-ember-espresso`.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "handle"
+    }
+  ],
+  "info": {
+    "_postman_id": "41715492-dd54-4bcb-be1c-59cb400c5516",
+    "name": "Cometeer Storefront (read-only agent surface)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Cometeer publishes a read-only browsing surface for agents in its own\n`/llms.txt` under the heading \"Read-Only Browsing (No Authentication\nRequired)\". This document is a faithful OpenAPI rendering of exactly the\nendpoints Cometeer names there, with schemas derived from live observed\nresponses on 2026-08-01. It is NOT a Cometeer-authored specification, and\nit is NOT the transactional surface — carts, checkouts and orders are only\nreachable through the UCP MCP endpoint catalogued in\n`mcp/cometeer-mcp.yml`.\n\nProvenance: generated from https://cometeer.com/llms.txt; every path below\nwas probed and returned HTTP 200. No endpoint has been invented.\n\n\nContact Support:\n Name: Cometeer Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cometeer Storefront (read-only agent surface)",
+    "version": "2026-08-01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cometeer.com/products.json",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of products per page (Shopify caps this at 250)."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "1-indexed page number."
+              }
+            ]
+          },
+          "docs": "Returns the store's published products as JSON. Paginated with `page` and `limit`. Documented in Cometeer's /llms.txt as \"Browse all products\"."
+        },
+        {
+          "info": {
+            "name": "Get a single product by handle",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cometeer.com/products/:handle.json",
+            "params": [
+              {
+                "name": "handle",
+                "value": "",
+                "type": "path",
+                "description": "The product's URL handle, e.g. `frozen-gold-ember-espresso`."
+              }
+            ]
+          },
+          "docs": "Documented in Cometeer's /llms.txt as \"Product JSON\"."
+        },
+        {
+          "info": {
+            "name": "Store sitemap index",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cometeer.com/sitemap.xml"
+          },
+          "docs": "Documented in Cometeer's /llms.txt under \"Store Metadata\"."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Collections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List products in a collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cometeer.com/collections/:handle/products.json",
+            "params": [
+              {
+                "name": "handle",
+                "value": "",
+                "type": "path",
+                "description": "The collection's URL handle, e.g. `all`."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Documented in Cometeer's /llms.txt as \"Collection JSON\". The `all` handle returns every product in the store."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search the storefront",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cometeer.com/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "The search query."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Restrict results to a resource type."
+              }
+            ]
+          },
+          "docs": "Documented in Cometeer's /llms.txt as \"Search\". Returns an HTML results page; there is no JSON representation of this endpoint on the storefront. Agents needing structured search should use the UCP MCP `search_catalog` tool instead (see mcp/cometeer-mcp.yml)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
