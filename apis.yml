@@ -35,6 +35,17 @@ tags:
 - Subscription
 - Agentic Commerce
 - Shopify
+- MCP
+tags_raw:
+- Company
+- Coffee
+- Food and Beverage
+- E-Commerce
+- Direct to Consumer
+- Retail
+- Subscription
+- Agentic Commerce
+- Shopify
 - Model Context Protocol
 apis:
 - aid: cometeer:storefront
@@ -47,6 +58,10 @@ apis:
   humanURL: https://cometeer.com/llms.txt
   baseURL: https://cometeer.com
   tags:
+  - Product
+  - Catalog
+  - E-Commerce
+  tags_raw:
   - Products
   - Catalog
   - E-Commerce
@@ -66,6 +81,10 @@ apis:
   humanURL: https://cometeer.com/llms.txt
   baseURL: https://cometeer.com/api/ucp/mcp
   tags:
+  - Agentic Commerce
+  - MCP
+  - Checkout
+  tags_raw:
   - Agentic Commerce
   - Model Context Protocol
   - Checkout
