@@ -48,36 +48,13 @@ tags_raw:
 - Shopify
 - Model Context Protocol
 apis:
-- aid: cometeer:storefront
-  name: Cometeer Storefront (read-only)
-  description: >-
-    The public, unauthenticated JSON browsing surface of the Cometeer online store —
-    products, collections, search and sitemap. Cometeer documents these endpoints for
-    agents itself, under "Read-Only Browsing (No Authentication Required)" in its
-    /llms.txt. No credential is required and no rate-limit headers are published.
-  humanURL: https://cometeer.com/llms.txt
-  baseURL: https://cometeer.com
-  tags:
-  - Product
-  - Catalog
-  - E-Commerce
-  tags_raw:
-  - Products
-  - Catalog
-  - E-Commerce
-  properties:
-  - type: OpenAPI
-    url: openapi/cometeer-storefront-openapi.yml
-  - type: LLMsTxt
-    url: llms/cometeer-llms.txt
 - aid: cometeer:ucp-commerce
   name: Cometeer UCP Commerce (MCP)
   description: >-
-    Cometeer's Universal Commerce Protocol shopping service, exposed over MCP
-    (JSON-RPC 2.0 via HTTP POST) at /api/ucp/mcp and advertised from
-    /.well-known/ucp. Thirteen tools cover catalog search and lookup, cart, checkout,
-    fulfillment, discount and order. Calls require a resolvable UCP agent profile
-    URI, and completing payment requires contemporaneous human buyer approval.
+    Cometeer's Universal Commerce Protocol shopping service, exposed over MCP (JSON-RPC 2.0 via HTTP POST)
+    at /api/ucp/mcp and advertised from /.well-known/ucp. Thirteen tools cover catalog search and lookup,
+    cart, checkout, fulfillment, discount and order. Calls require a resolvable UCP agent profile URI,
+    and completing payment requires contemporaneous human buyer approval.
   humanURL: https://cometeer.com/llms.txt
   baseURL: https://cometeer.com/api/ucp/mcp
   tags:
@@ -93,6 +70,42 @@ apis:
     url: mcp/cometeer-mcp.yml
   - type: ToolCrosswalk
     url: mcp/cometeer-tool-crosswalk.yml
+- aid: cometeer:cometeer-collections-api
+  name: Cometeer Collections API
+  description: Collection (category) browsing
+  humanURL: https://cometeer.com/llms.txt
+  baseURL: https://cometeer.com
+  tags:
+  - Collections
+  properties:
+  - type: OpenAPI
+    url: openapi/cometeer-collections-api-openapi.yml
+  - type: LLMsTxt
+    url: llms/cometeer-llms.txt
+- aid: cometeer:cometeer-products-api
+  name: Cometeer Products API
+  description: Product catalog browsing
+  humanURL: https://cometeer.com/llms.txt
+  baseURL: https://cometeer.com
+  tags:
+  - Products
+  properties:
+  - type: OpenAPI
+    url: openapi/cometeer-products-api-openapi.yml
+  - type: LLMsTxt
+    url: llms/cometeer-llms.txt
+- aid: cometeer:cometeer-search-api
+  name: Cometeer Search API
+  description: Storefront search
+  humanURL: https://cometeer.com/llms.txt
+  baseURL: https://cometeer.com
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/cometeer-search-api-openapi.yml
+  - type: LLMsTxt
+    url: llms/cometeer-llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
