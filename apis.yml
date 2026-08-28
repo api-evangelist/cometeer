@@ -16,6 +16,18 @@ description: >-
   instruction set, OpenID Connect and RFC 8414 authorization-server metadata on its
   own apex host, and a live Universal Commerce Protocol (UCP) merchant profile
   advertising an MCP endpoint for agent-driven cart, checkout and order flows.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://cometeer.com/cdn/shop/files/Cometeer01528.png?crop=center&height=480&v=1759521644&width=480
 url: https://raw.githubusercontent.com/api-evangelist/cometeer/refs/heads/main/apis.yml
 x-type: company
