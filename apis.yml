@@ -88,6 +88,8 @@ apis:
   humanURL: https://cometeer.com/llms.txt
   baseURL: https://cometeer.com
   tags:
+  - Collection
+  tags_raw:
   - Collections
   properties:
   - type: OpenAPI
@@ -100,6 +102,8 @@ apis:
   humanURL: https://cometeer.com/llms.txt
   baseURL: https://cometeer.com
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
