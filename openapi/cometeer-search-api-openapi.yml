@@ -1,0 +1,87 @@
+openapi: 3.2.0
+info:
+  title: Cometeer Storefront (read-only agent surface) Search API
+  version: '2026-08-01'
+  summary: Public, unauthenticated JSON endpoints of the Cometeer online store.
+  description: 'Cometeer publishes a read-only browsing surface for agents in its own
+
+    `/llms.txt` under the heading "Read-Only Browsing (No Authentication
+
+    Required)". This document is a faithful OpenAPI rendering of exactly the
+
+    endpoints Cometeer names there, with schemas derived from live observed
+
+    responses on 2026-08-01. It is NOT a Cometeer-authored specification, and
+
+    it is NOT the transactional surface — carts, checkouts and orders are only
+
+    reachable through the UCP MCP endpoint catalogued in
+
+    `mcp/cometeer-mcp.yml`.
+
+
+    Provenance: generated from https://cometeer.com/llms.txt; every path below
+
+    was probed and returned HTTP 200. No endpoint has been invented.
+
+    '
+  contact:
+    name: Cometeer Support
+    url: https://help.cometeer.com/
+  license:
+    name: Terms of Service
+    url: https://cometeer.com/policies/terms-of-service
+  x-provenance:
+    generated: '2026-08-01'
+    method: generated
+    source: https://cometeer.com/llms.txt
+    authored_by: API Evangelist enrichment pipeline
+    platform: Shopify
+servers:
+- url: https://cometeer.com
+  description: Cometeer production storefront
+tags:
+- name: Search
+  description: Storefront search
+paths:
+  /search:
+    get:
+      operationId: searchProducts
+      tags:
+      - Search
+      summary: Search the storefront
+      description: Documented in Cometeer's /llms.txt as "Search". Returns an HTML results page; there is no JSON representation of this endpoint on the storefront. Agents needing structured search should use the UCP MCP `search_catalog` tool instead (see mcp/cometeer-mcp.yml).
+      parameters:
+      - name: q
+        in: query
+        required: true
+        description: The search query.
+        schema:
+          type: string
+      - name: type
+        in: query
+        required: false
+        description: Restrict results to a resource type.
+        schema:
+          type: string
+          enum:
+          - product
+          - article
+          - page
+      responses:
+        '200':
+          description: HTML search results page.
+          content:
+            text/html:
+              schema:
+                type: string
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+components:
+  responses:
+    TooManyRequests:
+      description: Rate limited. Cometeer's /llms.txt instructs agents to back off on 429 responses.
+      content:
+        text/html:
+          schema:
+            type: string
