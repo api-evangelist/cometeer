@@ -1,0 +1,24 @@
+{
+  "provider": "cometeer",
+  "sources": [
+    "_original/cometeer-storefront-openapi.yml"
+  ],
+  "outputs": [
+    "cometeer-collections-api-openapi.yml",
+    "cometeer-products-api-openapi.yml",
+    "cometeer-search-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "cometeer-storefront-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "cometeer-collections-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cometeer-products-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cometeer-search-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
+}

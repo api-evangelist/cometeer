@@ -7,24 +7,7 @@ info:
 
     `/llms.txt` under the heading "Read-Only Browsing (No Authentication
 
-    Required)". This document is a faithful OpenAPI rendering of exactly the
-
-    endpoints Cometeer names there, with schemas derived from live observed
-
-    responses on 2026-08-01. It is NOT a Cometeer-authored specification, and
-
-    it is NOT the transactional surface — carts, checkouts and orders are only
-
-    reachable through the UCP MCP endpoint catalogued in
-
-    `mcp/cometeer-mcp.yml`.
-
-
-    Provenance: generated from https://cometeer.com/llms.txt; every path below
-
-    was probed and returned HTTP 200. No endpoint has been invented.
-
-    '
+    Required)".'
   contact:
     name: Cometeer Support
     url: https://help.cometeer.com/
