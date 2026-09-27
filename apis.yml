@@ -96,11 +96,13 @@ apis:
     url: mcp/cometeer-mcp.yml
   - type: ToolCrosswalk
     url: mcp/cometeer-tool-crosswalk.yml
+  x-surface: platform-generated
+  x-platform: shopify
+  x-platform-surface: ucp
 - aid: cometeer:cometeer-collections-api
   name: Cometeer Collections API
   description: Collection (category) browsing
   humanURL: https://cometeer.com/llms.txt
-  baseURL: https://cometeer.com
   tags:
   - Collection
   tags_raw:
@@ -114,7 +116,6 @@ apis:
   name: Cometeer Products API
   description: Product catalog browsing
   humanURL: https://cometeer.com/llms.txt
-  baseURL: https://cometeer.com
   tags:
   - Product
   tags_raw:
@@ -128,7 +129,6 @@ apis:
   name: Cometeer Search API
   description: Storefront search
   humanURL: https://cometeer.com/llms.txt
-  baseURL: https://cometeer.com
   tags:
   - Search
   properties:

@@ -305,14 +305,14 @@ components:
           type: string
           format: date-time
   responses:
-    NotFound:
-      description: The requested resource does not exist.
+    TooManyRequests:
+      description: Rate limited. Cometeer's /llms.txt instructs agents to back off on 429 responses.
       content:
         text/html:
           schema:
             type: string
-    TooManyRequests:
-      description: Rate limited. Cometeer's /llms.txt instructs agents to back off on 429 responses.
+    NotFound:
+      description: The requested resource does not exist.
       content:
         text/html:
           schema:
