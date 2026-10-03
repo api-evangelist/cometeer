@@ -73,24 +73,20 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 components:
-  schemas:
-    Option:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        product_id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        position:
-          type: integer
-        values:
-          type: array
-          items:
+  responses:
+    NotFound:
+      description: The requested resource does not exist.
+      content:
+        text/html:
+          schema:
             type: string
+    TooManyRequests:
+      description: Rate limited. Cometeer's /llms.txt instructs agents to back off on 429 responses.
+      content:
+        text/html:
+          schema:
+            type: string
+  schemas:
     Product:
       type: object
       description: A storefront product, as observed in live responses.
@@ -146,6 +142,56 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Option'
+    Option:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        product_id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        position:
+          type: integer
+        values:
+          type: array
+          items:
+            type: string
+    Image:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        product_id:
+          type: integer
+          format: int64
+        src:
+          type: string
+          format: uri
+        alt:
+          type:
+          - string
+          - 'null'
+        width:
+          type: integer
+        height:
+          type: integer
+        position:
+          type: integer
+        variant_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
     Variant:
       type: object
       description: A purchasable variant of a product.
@@ -233,49 +279,3 @@ components:
         updated_at:
           type: string
           format: date-time
-    Image:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        product_id:
-          type: integer
-          format: int64
-        src:
-          type: string
-          format: uri
-        alt:
-          type:
-          - string
-          - 'null'
-        width:
-          type: integer
-        height:
-          type: integer
-        position:
-          type: integer
-        variant_ids:
-          type: array
-          items:
-            type: integer
-            format: int64
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-  responses:
-    TooManyRequests:
-      description: Rate limited. Cometeer's /llms.txt instructs agents to back off on 429 responses.
-      content:
-        text/html:
-          schema:
-            type: string
-    NotFound:
-      description: The requested resource does not exist.
-      content:
-        text/html:
-          schema:
-            type: string
