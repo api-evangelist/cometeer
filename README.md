@@ -64,5 +64,112 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Cometeer is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://forgeglobal.com/cometeer_stock/
+Cometeer is a Gloucester, Massachusetts coffee company, founded in 2015 by Matthew Roberts and Douglas Hoon, that brews specialty coffee at high extraction and then flash-freezes it with liquid nitrogen into single-serve capsules shipped direct to consumers by subscription. Coffees are roasted by third-wave partners including Counter Culture, Intelligentsia, Onyx, Square Mile, Equator and George Howell. Cometeer publishes no developer API, but its Shopify-hosted storefront exposes a substantial machine-readable agent surface: an /llms.txt agent instruction set, OpenID Connect and RFC 8414 authorization-server metadata on its own apex host, and a live Universal Commerce Protocol (UCP) merchant profile advertising an MCP endpoint for agent-driven cart, checkout and order flows.
+
+**Areas:** Company · Coffee · Food and Beverage · E-Commerce · Direct to Consumer · Retail · Subscription · Agentic Commerce · Shopify · MCP
+
+## Cometeer on APIs.io
+
+Everything profiled for Cometeer is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/cometeer/](https://apis.io/providers/cometeer/)** — or go straight to one of the APIs or properties below.
+
+### APIs (4)
+
+- [Cometeer UCP Commerce (MCP)](https://apis.io/apis/cometeer/ucp-commerce/) — Cometeer's Universal Commerce Protocol shopping service, exposed over MCP (JSON-RPC 2.0 via HTTP POST) at /api/ucp/mcp and advertised from /.well-known/ucp.…
+- [Cometeer Collections API](https://apis.io/apis/cometeer/cometeer-collections-api/) — Collection (category) browsing
+- [Cometeer Products API](https://apis.io/apis/cometeer/cometeer-products-api/) — Product catalog browsing
+- [Cometeer Search API](https://apis.io/apis/cometeer/cometeer-search-api/) — Storefront search
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [cometeer-ucp-shopping](https://apis.io/servers/cometeer/cometeer-ucp-shopping/)
+
+#### Collections (1)
+
+Postman and Open Collection request collections.
+
+- [Cometeer Storefront (read-only agent surface)](https://apis.io/collections/cometeer/open-cometeer-storefront/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Cometeer Authentication](https://apis.io/security/cometeer/cometeer-authentication/)
+- [Cometeer Domain Security](https://apis.io/security/cometeer/cometeer-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Cometeer Scopes](https://apis.io/scopes/cometeer/cometeer-scopes/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://cometeer.com/)
+- [Documentation](https://cometeer.com/agents.md)
+- [Pricing](https://cometeer.com/pages/shop-all-coffee)
+- [Sign up](https://account.cometeer.com/account)
+- [Support](https://help.cometeer.com/)
+- [Blog](https://cometeer.com/blogs/tasting-notes)
+- [Terms of service](https://cometeer.com/policies/terms-of-service)
+- [Privacy policy](https://cometeer.com/policies/privacy-policy)
+
+## API Evangelist rating
+
+**Kin Score 30.0** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.7 |
+| Contract quality | 13.1 |
+| Contract governance | 18.2 |
+| Operational transparency | 0.0 |
+| Developer ergonomics | 30.4 |
+| Access clarity | 44.7 |
+
+**Agent readiness 32.9** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | na |
+| MCP Server | platform (partial credit) |
+| Auth Clarity | served (partial credit) |
+| Idempotency | na |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | platform (partial credit) |
+
+**Regulatory alignment 34.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/cometeer/](https://apis.io/providers/cometeer/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Cometeer: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/cometeer/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
